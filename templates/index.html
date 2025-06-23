@@ -11,6 +11,7 @@
     <h1>Hello from main index</h1>
 <a href="/index2">Переход на index2</a><br>
 <button hx-get="/test_json" hx-target=".test_json">TEST BUTTON</button>
-<div class="test_json"></div>
+<div class="test_json"></div><br>
+<button hx-post="/test_post" hx-swap="none" hx-vals='{"test": "test"}' hx-ext="json-enc">TEST POST BUTTON</button>
 </body>
 </html>

@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import uvicorn
 from random import randint
+import json
 
 
 app = FastAPI()
@@ -26,6 +27,12 @@ def test_json(request: Request):
     with open(file="./json_test.txt", mode="+a") as file:
         file.write(f"{number}\n")
     return number
+
+@app.post("/test_post")
+async def test_post(request: Request):
+    bb = await request.body()
+    print(bb)
+    print("OK")
 
 
 if __name__ == "__main__":
