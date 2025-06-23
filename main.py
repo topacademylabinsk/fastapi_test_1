@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import uvicorn
+from random import randint
 
 
 app = FastAPI()
@@ -21,8 +22,11 @@ def index2(request: Request):
 
 @app.get("/test_json")
 def test_json(request: Request):
-    return {"test": 123}
+    number = randint(0, 100000)
+    with open(file="./json_test.txt", mode="+a") as file:
+        file.write(f"{number}\n")
+    return number
 
 
 if __name__ == "__main__":
-    uvicorn.run(app=app, port=8555)
+    uvicorn.run(app=app, port=80, host="192.168.88.60")

@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index1</title>
     <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js"></script>
 </head>
 <body>
     <h1>Hello from main index</h1>
-<a href="/index2">Переход на index2</a>
+<a href="/index2">Переход на index2</a><br>
+<button hx-get="/test_json" hx-target=".test_json">TEST BUTTON</button>
+<div class="test_json"></div>
 </body>
 </html>
