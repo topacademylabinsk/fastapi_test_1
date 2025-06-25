@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import uvicorn
-from utils import feedback_logger, parse_htmx_requests
+from utils import feedback_logger
 
 
 app = FastAPI()
