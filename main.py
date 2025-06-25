@@ -17,9 +17,7 @@ def root(request: Request):
 
 @app.post("/feedback_form")
 async def test_post(request: Request):
-    body = await request.body()
-    raw_str_data = body.decode()
-    form_data = parse_htmx_requests(raw_str_data)
+    form_data = await request.json()
     str_for_logger = f"Имя: {form_data['name']} Почта:{form_data['email']} Телефон: {form_data['phone']}"
     feedback_logger(str_for_logger)
 
