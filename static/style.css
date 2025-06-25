@@ -1,5 +1,32 @@
-a {
-    color:black;
-    background-color: brown;
-    text-decoration: none;
+html, body, p {
+    padding: 0;
+    margin: 0;
+}
+
+.main_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_title {
+    text-align: center;
+}
+
+.main_form_container {
+    display: flex;
+    width: fit-content;
+}
+
+.main_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form_element {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }

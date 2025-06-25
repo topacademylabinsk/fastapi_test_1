@@ -8,10 +8,25 @@
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js"></script>
 </head>
 <body>
-    <h1>Hello from main index</h1>
-<a href="/index2">Переход на index2</a><br>
-<button hx-get="/test_json" hx-target=".test_json">TEST BUTTON</button>
-<div class="test_json"></div><br>
-<button hx-post="/test_post" hx-swap="none" hx-vals='{"test": "test"}' hx-ext="json-enc">TEST POST BUTTON</button>
+    <div class="main_container">
+        <h1 class="main_title">Форма обратной связи</h1>
+        <div class="main_form_container">
+            <form class="main_form" hx-post="/feedback_form" hx-swap="none">
+                <div class="form_element">
+                    <p>Имя:</p>
+                    <input type="text" name="name" placeholder="John">
+                </div>
+                <div class="form_element">
+                    <p>Почта:</p>
+                    <input type="text" name="email" placeholder="qwerty@qwe.com">
+                </div>
+                <div class="form_element">
+                    <p>Телефон:</p>
+                    <input type="text" name="phone" placeholder="+79991234334">
+                </div>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

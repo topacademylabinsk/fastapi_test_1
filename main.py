@@ -2,8 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import uvicorn
-from random import randint
-import json
+from utils import feedback_logger, parse_htmx_requests
 
 
 app = FastAPI()
@@ -16,23 +15,13 @@ def root(request: Request):
     return templates.TemplateResponse(request=request, name="index.html")
 
 
-@app.get("/index2")
-def index2(request: Request):
-    return templates.TemplateResponse(request=request, name="index2.html")
-
-
-@app.get("/test_json")
-def test_json(request: Request):
-    number = randint(0, 100000)
-    with open(file="./json_test.txt", mode="+a") as file:
-        file.write(f"{number}\n")
-    return number
-
-@app.post("/test_post")
+@app.post("/feedback_form")
 async def test_post(request: Request):
-    bb = await request.body()
-    print(bb)
-    print("OK")
+    body = await request.body()
+    raw_str_data = body.decode()
+    form_data = parse_htmx_requests(raw_str_data)
+    str_for_logger = f"Имя: {form_data["name"]} Почта:{form_data["email"]} Телефон: {form_data["phone"]}"
+    feedback_logger(str_for_logger)
 
 
 if __name__ == "__main__":
