@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index1</title>
+    <title>Форма обратной связи</title>
     <link rel="stylesheet" href="static/style.css">
     <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.5/dist/htmx.min.js"></script>
+    <script src="https://unpkg.com/htmx-ext-json-enc@2.0.1/json-enc.js"></script>
 </head>
 <body>
     <div class="main_container">
         <h1 class="main_title">Форма обратной связи</h1>
         <div class="main_form_container">
-            <form class="main_form" hx-post="/feedback_form" hx-swap="none">
+            <form class="main_form" hx-post="/feedback_form" hx-swap="none" hx-ext='json-enc'>
                 <div class="form_element">
                     <p>Имя:</p>
                     <input type="text" name="name" placeholder="John">
                 </div>
                 <div class="form_element">
                     <p>Почта:</p>
-                    <input type="text" name="email" placeholder="qwerty@qwe.com">
+                    <input type="email" name="email" placeholder="qwerty@qwe.com">
                 </div>
                 <div class="form_element">
                     <p>Телефон:</p>
-                    <input type="text" name="phone" placeholder="+79991234334">
+                    <input type="tel" name="phone" placeholder="+79991234334">
                 </div>
                 <button type="submit">Отправить</button>
             </form>
