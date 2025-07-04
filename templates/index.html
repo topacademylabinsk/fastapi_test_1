@@ -23,7 +23,7 @@
     <div class="main_container">
         <h1 class="main_title">Форма обратной связи</h1>
         <div class="main_form_container">
-            <form class="main_form" hx-post="/feedback_form" hx-swap="none" hx-ext='json-enc'>
+            <form class="main_form" hx-post="/feedback_form" hx-swap="innerHTML" hx-target="#form_status" hx-ext='json-enc'>
                 <div class="form_element">
                     <p>Имя:</p>
                     <input type="text" name="name" placeholder="John">
@@ -38,6 +38,9 @@
                 </div>
                 <button class="form_button" type="submit">Отправить</button>
             </form>
+        </div>
+        <div id="form_status">
+
         </div>
     </div>
 </body>

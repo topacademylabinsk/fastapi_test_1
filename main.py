@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import uvicorn
-from utils import feedback_logger
+from utils import feedback_logger, validate_form_data
 
 
 app = FastAPI()
@@ -18,8 +18,24 @@ def root(request: Request):
 @app.post("/feedback_form")
 async def test_post(request: Request):
     form_data = await request.json()
-    str_for_logger = f"Имя: {form_data['name']} Почта:{form_data['email']} Телефон: {form_data['phone']}"
-    feedback_logger(str_for_logger)
+    name = form_data["name"]
+    email = form_data["email"]
+    number = form_data["phone"]
+
+    result_validate_data = validate_form_data(name, email, number)
+
+    if not result_validate_data["name"]:
+        return "Неправильное имя"
+    elif not result_validate_data["email"]:
+        return "Неправильная почта"
+    elif not result_validate_data["number"]:
+        return "Неправильный номер"
+    else:
+        str_for_logger = f"Имя: {name} Почта:{email} Телефон: {number}"
+        feedback_logger(str_for_logger)
+        return templates.TemplateResponse(
+            request=request, name="success_form_status.html"
+        )
 
 
 if __name__ == "__main__":
