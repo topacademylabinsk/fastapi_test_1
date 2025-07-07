@@ -1,6 +1,7 @@
 from email_validator import validate_email, EmailNotValidError
 import re
 
+
 def feedback_logger_to_file(data: str):
     with open(file="./feedback_logs.txt", mode="+a", encoding="UTF-8") as file:
         file.write(f"{data}\n")

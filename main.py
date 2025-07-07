@@ -16,6 +16,14 @@ def root(request: Request):
     return templates.TemplateResponse(request=request, name="index.html")
 
 
+@app.get("/data")
+def get_data(request: Request):
+    list_data = db_con.get_all_data("form_data")
+    return templates.TemplateResponse(
+        request=request, name="data.html", context={"list_data": list_data}
+    )
+
+
 @app.post("/feedback_form")
 async def test_post(request: Request):
     form_data = await request.json()
