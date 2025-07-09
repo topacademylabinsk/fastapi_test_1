@@ -1,5 +1,6 @@
-from email_validator import validate_email, EmailNotValidError
 import re
+
+from email_validator import EmailNotValidError, validate_email
 
 
 def feedback_logger_to_file(data: str):
