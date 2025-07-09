@@ -1,0 +1,10 @@
+html, body, p {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #4abbbd;
+    background: linear-gradient(0deg, rgba(74, 187, 189, 1) 0%, rgba(201, 145, 24, 1) 100%);
+    height: 100vh;
+}
