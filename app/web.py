@@ -1,8 +1,9 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from dotenv import load_dotenv
-import os
 
 from app.db import db_con
 from app.utils import feedback_logger_to_file, validate_form_data
@@ -25,7 +26,7 @@ async def post_auth(request: Request):
 
     form_data = await request.json()
     form_pass = form_data["password"]
-    
+
     if admin_pass == form_pass:
         list_data = db_con.get_all_data("form_data")
         return templates.TemplateResponse(
@@ -33,6 +34,7 @@ async def post_auth(request: Request):
         )
     else:
         return templates.TemplateResponse(request=request, name="incorrect_pass.html")
+
 
 @app.get("/data")
 async def get_data(request: Request):
