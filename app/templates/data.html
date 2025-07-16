@@ -8,8 +8,15 @@
     <link rel="stylesheet" href="static/data.css">
 {% endblock %}
 
+{% block header_button %}
+    <div class="header_button">
+        <a href="/">Форма</a>
+    </div>
+{% endblock %}
+
 {% block main %}
     <div class="main_container">
+        <h1>Сохраненные данные</h1>
         <ul>
             {% for data in list_data %}
             <li>{{ data[1] }} {{ data[2] }} {{ data[3] }}</li>

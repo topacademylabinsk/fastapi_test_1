@@ -23,6 +23,12 @@
     <script src="https://unpkg.com/htmx-ext-json-enc@2.0.1/json-enc.js"></script>
 </head>
 <body>
+<header>
+    <div class="header_container">
+        {% block header_button %}
+        {% endblock %}
+    </div>
+</header>
 {% block main %}
 {% endblock %}
 </body>
