@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Данные БД</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="static/index.css">
+    <link rel="stylesheet" href="static/data.css">
+{% endblock %}
+
+{% block header_button %}
+    <div class="header_button">
+        <a href="/">Форма</a>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <div class="main_container">
+        <h1 class="main_title">Аутентификация</h1>
+        <div class="main_form_container">
+            <form class="main_form" hx-post="/auth" hx-swap="outerHTML" hx-target=".main_container" hx-ext='json-enc'>
+                <div class="form_element">
+                    <p>Введите пароль:</p>
+                    <input type="password" name="password" placeholder="12345678">
+                </div>
+                <button class="form_button" type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,26 +1,8 @@
-{% extends "base.html" %}
-
-{% block title %}
-<title>Данные БД</title>
-{% endblock %}
-
-{% block styles %}
-    <link rel="stylesheet" href="static/data.css">
-{% endblock %}
-
-{% block header_button %}
-    <div class="header_button">
-        <a href="/">Форма</a>
-    </div>
-{% endblock %}
-
-{% block main %}
-    <div class="main_container">
-        <h1>Сохраненные данные</h1>
-        <ul>
-            {% for data in list_data %}
-            <li>{{ data[1] }} {{ data[2] }} {{ data[3] }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endblock %}
+<div class="main_container">
+    <h1>Сохраненные данные</h1>
+    <ul>
+        {% for data in list_data %}
+        <li>{{ data[1] }} {{ data[2] }} {{ data[3] }}</li>
+        {% endfor %}
+    </ul>
+</div>
